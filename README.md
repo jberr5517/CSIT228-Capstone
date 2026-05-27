@@ -10,15 +10,50 @@
 ## Project Description
 The Attendance Management System is a desktop application designed to digitize and streamline the process of tracking attendance for organizations such as schools, offices, or events. It replaces manual paper-based logs or error-prone spreadsheets with a centralized, role-based digital solution. The system addresses common problems like lost records, time theft, difficulty in searching historical data, and lack of access control. 
 
-## Proposed Features
-- User login / authentication
-- Add / edit / delete attendance records
-- Time-in / time-out logging
-- Display data in tables (JavaFX TableView)
-- Search and filtering
-- Database integration (e.g., SQLite/MySQL)
-- Role-based access (admin/user)
-- Data validation
+## Features
+
+### Authentication
+- User **registration** with username, full name, password, and role selection (Admin / Student)
+- Secure **login** with username and password validation
+- Input validation with clear error messages (e.g. password length, duplicate usernames)
+
+### Role-Based Access Control
+- **Admin** — Full access: add/remove students, mark attendance, reset records
+- **Student** — Read-only access: view and search attendance records only
+- Role badge displayed in the dashboard header after login
+
+### Live Attendance Dashboard
+- Real-time summary panel showing:
+  - **Total Students**
+  - **Present** count
+  - **Absent** count
+  - **Attendance Rate** (percentage)
+- Summary updates automatically as attendance is marked
+
+### Today's Attendance (Admin)
+- Mark selected students as **Present**, **Absent**, or **On Leave**
+- **Remove** individual student records
+- **Reset All** statuses in one click
+- **Time-in** is automatically recorded when a student is marked present
+- Live **search bar** to quickly find students by name, ID, or section
+
+### Student View Mode
+- Students see a read-only version of the attendance table
+- Includes a dedicated **search bar** to filter by name or section
+- Clear "View Only" banner to indicate limited permissions
+
+### Attendance History Tab
+- Browse **all past attendance records** stored in the database
+- Filter by:
+  - **Date range** (From / To date pickers)
+  - **Status** (Present / Absent / Leave)
+  - **Name or Section** (text search)
+- Apply filters with a single button click
+
+### Database Integration
+- Powered by **MySQL** via JDBC
+- All records (users, students, attendance logs) are persisted across sessions
+- **Singleton** pattern used for the database connection manager
 
 ## Planned Technologies
 - Java

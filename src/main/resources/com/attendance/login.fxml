@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.attendance.LoginController"
+           prefWidth="440" prefHeight="520"
+           style="-fx-background-color: #F0EEE8;">
+
+    <VBox alignment="CENTER" spacing="0"
+          maxWidth="360"
+          style="-fx-background-color: white;
+                 -fx-border-color: #D3D1C7;
+                 -fx-border-width: 0.5;
+                 -fx-border-radius: 12;
+                 -fx-background-radius: 12;
+                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 16, 0, 0, 4);">
+
+        
+        <VBox alignment="CENTER" spacing="6"
+              style="-fx-background-color: #2C2C2A;
+                     -fx-background-radius: 12 12 0 0;
+                     -fx-padding: 32 24 28 24;">
+            <Label text="📋" style="-fx-font-size: 36px;"/>
+            <Label text="Attendance System"
+                   style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+            <Label text="Sign in to your account"
+                   style="-fx-text-fill: #9FE1CB; -fx-font-size: 12px;"/>
+        </VBox>
+
+        
+        <VBox spacing="14" style="-fx-padding: 28 28 8 28;">
+
+            <VBox spacing="5">
+                <Label text="ID"
+                       style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #444441;"/>
+                <TextField fx:id="tfUsername" promptText="Enter username"
+                           style="-fx-font-size: 13px; -fx-padding: 9 12;
+                                  -fx-border-color: #D3D1C7; -fx-border-radius: 6;
+                                  -fx-background-radius: 6;"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <Label text="Password"
+                       style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #444441;"/>
+                <PasswordField fx:id="tfPassword" promptText="Enter password"
+                               style="-fx-font-size: 13px; -fx-padding: 9 12;
+                                      -fx-border-color: #D3D1C7; -fx-border-radius: 6;
+                                      -fx-background-radius: 6;"/>
+            </VBox>
+
+            
+            <Label fx:id="lblError" text=""
+                   style="-fx-text-fill: #A32D2D; -fx-font-size: 12px;
+                          -fx-wrap-text: true;" maxWidth="304"/>
+
+            
+            <Button text="Sign In" onAction="#handleLogin"
+                    maxWidth="Infinity" prefHeight="40"
+                    style="-fx-background-color: #2C2C2A; -fx-text-fill: white;
+                           -fx-font-size: 13px; -fx-font-weight: bold;
+                           -fx-border-radius: 6; -fx-background-radius: 6;
+                           -fx-cursor: hand;"/>
+        </VBox>
+
+        
+        <VBox alignment="CENTER" spacing="4"
+              style="-fx-background-color: #E6F1FB;
+                     -fx-border-color: #B5D4F4;
+                     -fx-border-width: 0.5;
+                     -fx-border-radius: 6;
+                     -fx-background-radius: 6;
+                     -fx-padding: 10 16;
+                     -fx-margin: 0 28;">
+            <padding><Insets left="28" right="28"/></padding>
+            <Label text="👤  Student Access"
+                   style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #0C447C;"/>
+            <Label text="Student accounts can sign in to view attendance records only."
+                   style="-fx-font-size: 11px; -fx-text-fill: #185FA5;
+                          -fx-wrap-text: true; -fx-text-alignment: CENTER;"
+                   maxWidth="280"/>
+        </VBox>
+
+        <HBox alignment="CENTER" spacing="4" style="-fx-padding: 14 28 12 28;">
+            <Label text="Don't have an account?"
+                   style="-fx-font-size: 12px; -fx-text-fill: #888780;"/>
+            <Hyperlink text="Register here" onAction="#goToRegister"
+                       style="-fx-font-size: 12px; -fx-text-fill: #185FA5;
+                              -fx-border-color: transparent;"/>
+        </HBox>
+
+        <Label text="Default: admin / admin123"
+               style="-fx-font-size: 11px; -fx-text-fill: #B4B2A9; -fx-padding: 0 0 18 0;"/>
+    </VBox>
+</StackPane>

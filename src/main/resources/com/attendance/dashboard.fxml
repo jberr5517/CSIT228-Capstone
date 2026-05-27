@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.attendance.DashboardController"
+            prefWidth="980" prefHeight="660"
+            style="-fx-background-color: #F0EEE8;">
+
+    <top>
+        <HBox style="-fx-background-color: #2C2C2A; -fx-padding: 12 20;"
+              alignment="CENTER_LEFT" spacing="12">
+            <Label text="📋  Attendance System"
+                   style="-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="lblRoleBadge" text=""
+                   style="-fx-font-size: 11px; -fx-padding: 3 10;
+                          -fx-border-radius: 10; -fx-background-radius: 10;"/>
+            <Label fx:id="lblDate"
+                   style="-fx-text-fill: #9FE1CB; -fx-font-size: 12px;"/>
+            <Separator orientation="VERTICAL"/>
+            <Label fx:id="lblWelcome"
+                   style="-fx-text-fill: #D3D1C7; -fx-font-size: 12px;"/>
+            <Button text="Logout" onAction="#logout"
+                    style="-fx-background-color: #FCEBEB; -fx-text-fill: #501313;
+                           -fx-border-color: #A32D2D; -fx-border-width: 0.5;
+                           -fx-border-radius: 5; -fx-background-radius: 5;
+                           -fx-font-size: 12px; -fx-padding: 5 12; -fx-cursor: hand;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox>
+
+            <VBox prefWidth="230" spacing="10"
+                  style="-fx-background-color: #F8F7F4;
+                         -fx-border-color: #D3D1C7; -fx-border-width: 0 1 0 0;
+                         -fx-padding: 18 14;">
+
+                <Label text="SUMMARY"
+                       style="-fx-font-size: 10px; -fx-font-weight: bold;
+                              -fx-text-fill: #888780;"/>
+
+                <VBox style="-fx-background-color: white; -fx-border-color: #D3D1C7;
+                             -fx-border-width: 0.5; -fx-border-radius: 8;
+                             -fx-background-radius: 8; -fx-padding: 10 12;">
+                    <Label text="Total Students"
+                           style="-fx-font-size: 11px; -fx-text-fill: #888780;"/>
+                    <Label fx:id="lblTotal" text="0"
+                           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2C2C2A;"/>
+                </VBox>
+
+                <VBox style="-fx-background-color: #EAF3DE; -fx-border-color: #639922;
+                             -fx-border-width: 0.5; -fx-border-radius: 8;
+                             -fx-background-radius: 8; -fx-padding: 10 12;">
+                    <Label text="Present"
+                           style="-fx-font-size: 11px; -fx-text-fill: #3B6D11;"/>
+                    <Label fx:id="lblPresent" text="0"
+                           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #27500A;"/>
+                </VBox>
+
+                <VBox style="-fx-background-color: #FCEBEB; -fx-border-color: #A32D2D;
+                             -fx-border-width: 0.5; -fx-border-radius: 8;
+                             -fx-background-radius: 8; -fx-padding: 10 12;">
+                    <Label text="Absent"
+                           style="-fx-font-size: 11px; -fx-text-fill: #A32D2D;"/>
+                    <Label fx:id="lblAbsent" text="0"
+                           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #501313;"/>
+                </VBox>
+
+                <VBox style="-fx-background-color: #E6F1FB; -fx-border-color: #185FA5;
+                             -fx-border-width: 0.5; -fx-border-radius: 8;
+                             -fx-background-radius: 8; -fx-padding: 10 12;">
+                    <Label text="Attendance Rate"
+                           style="-fx-font-size: 11px; -fx-text-fill: #185FA5;"/>
+                    <Label fx:id="lblRate" text="0%"
+                           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #042C53;"/>
+                </VBox>
+
+                <Separator/>
+
+                <VBox fx:id="addFormPanel" spacing="8">
+                    <Label text="ADD STUDENT"
+                           style="-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #888780;"/>
+                    <TextField fx:id="tfNewId" promptText="Student ID"
+                               style="-fx-font-size: 12px; -fx-padding: 7 10;
+                                      -fx-border-color: #D3D1C7; -fx-border-radius: 5;
+                                      -fx-background-radius: 5;"/>
+                    <TextField fx:id="tfNewName" promptText="Full Name"
+                               style="-fx-font-size: 12px; -fx-padding: 7 10;
+                                      -fx-border-color: #D3D1C7; -fx-border-radius: 5;
+                                      -fx-background-radius: 5;"/>
+                    <TextField fx:id="tfNewSection" promptText="Section"
+                               style="-fx-font-size: 12px; -fx-padding: 7 10;
+                                      -fx-border-color: #D3D1C7; -fx-border-radius: 5;
+                                      -fx-background-radius: 5;"/>
+                    <Label fx:id="lblFormError" text=""
+                           style="-fx-text-fill: #A32D2D; -fx-font-size: 11px;
+                                  -fx-wrap-text: true;" maxWidth="202"/>
+                    <Button text="+ Add Student" onAction="#addStudent"
+                            maxWidth="Infinity" prefHeight="34"
+                            style="-fx-background-color: #2C2C2A; -fx-text-fill: white;
+                                   -fx-font-size: 12px; -fx-font-weight: bold;
+                                   -fx-border-radius: 5; -fx-background-radius: 5;
+                                   -fx-cursor: hand;"/>
+                </VBox>
+
+                <VBox fx:id="readOnlyPanel" spacing="6" style="-fx-padding: 4 0;">
+                    <Label text="VIEW ONLY MODE"
+                           style="-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #185FA5;"/>
+                    <Label text="You are logged in as a Student. You can view attendance records but cannot make changes."
+                           style="-fx-font-size: 11px; -fx-text-fill: #5F5E5A;
+                                  -fx-wrap-text: true;" maxWidth="202"/>
+                </VBox>
+
+            </VBox>
+
+            <TabPane HBox.hgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE"
+                     style="-fx-tab-min-height: 34px; -fx-font-size: 12px;">
+
+                
+                <Tab text="  Today's Attendance  ">
+                    <VBox>
+
+                        
+                        <HBox fx:id="adminToolbar"
+                              style="-fx-background-color: white;
+                                     -fx-border-color: #D3D1C7; -fx-border-width: 0 0 1 0;
+                                     -fx-padding: 10 14;" alignment="CENTER_LEFT" spacing="8">
+                            <Button text="✔ Present" onAction="#markPresent"
+                                    style="-fx-background-color: #EAF3DE; -fx-text-fill: #27500A;
+                                           -fx-border-color: #639922; -fx-border-width: 0.5;
+                                           -fx-border-radius: 5; -fx-background-radius: 5;
+                                           -fx-font-size: 12px; -fx-padding: 7 12; -fx-cursor: hand;"/>
+                            <Button text="✘ Absent" onAction="#markAbsent"
+                                    style="-fx-background-color: #FCEBEB; -fx-text-fill: #501313;
+                                           -fx-border-color: #A32D2D; -fx-border-width: 0.5;
+                                           -fx-border-radius: 5; -fx-background-radius: 5;
+                                           -fx-font-size: 12px; -fx-padding: 7 12; -fx-cursor: hand;"/>
+                            <Button text="🏠 Leave" onAction="#markLeave"
+                                    style="-fx-background-color: #FAEEDA; -fx-text-fill: #412402;
+                                           -fx-border-color: #854F0B; -fx-border-width: 0.5;
+                                           -fx-border-radius: 5; -fx-background-radius: 5;
+                                           -fx-font-size: 12px; -fx-padding: 7 12; -fx-cursor: hand;"/>
+                            <Separator orientation="VERTICAL"/>
+                            <Button text="🗑 Remove" onAction="#removeSelected"
+                                    style="-fx-background-color: transparent; -fx-text-fill: #A32D2D;
+                                           -fx-border-color: #A32D2D; -fx-border-width: 0.5;
+                                           -fx-border-radius: 5; -fx-background-radius: 5;
+                                           -fx-font-size: 12px; -fx-padding: 7 12; -fx-cursor: hand;"/>
+                            <Button text="↺ Reset All" onAction="#resetAll"
+                                    style="-fx-background-color: transparent; -fx-text-fill: #5F5E5A;
+                                           -fx-border-color: #B4B2A9; -fx-border-width: 0.5;
+                                           -fx-border-radius: 5; -fx-background-radius: 5;
+                                           -fx-font-size: 12px; -fx-padding: 7 12; -fx-cursor: hand;"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <TextField fx:id="tfSearch" promptText="Search..."
+                                       prefWidth="180"
+                                       style="-fx-font-size: 12px; -fx-padding: 7 10;
+                                              -fx-border-color: #D3D1C7; -fx-border-radius: 5;
+                                              -fx-background-radius: 5;"/>
+                        </HBox>
+
+                        
+                        <HBox fx:id="studentToolbar"
+                              style="-fx-background-color: #E6F1FB;
+                                     -fx-border-color: #D3D1C7; -fx-border-width: 0 0 1 0;
+                                     -fx-padding: 10 14;" alignment="CENTER_LEFT" spacing="8">
+                            <Label text="👁 View Only — You can search and view attendance records."
+                                   style="-fx-font-size: 12px; -fx-text-fill: #0C447C;"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <TextField fx:id="tfSearchStudent" promptText="Search..."
+                                       prefWidth="180" onKeyReleased="#onStudentSearch"
+                                       style="-fx-font-size: 12px; -fx-padding: 7 10;
+                                              -fx-border-color: #B5D4F4; -fx-border-radius: 5;
+                                              -fx-background-radius: 5;"/>
+                        </HBox>
+
+                        <TableView fx:id="tableView" VBox.vgrow="ALWAYS"
+                                   style="-fx-font-size: 12px; -fx-background-color: white;">
+                            <columns>
+                                <TableColumn fx:id="colId"      text="Student ID"  prefWidth="120"/>
+                                <TableColumn fx:id="colName"    text="Full Name"   prefWidth="210"/>
+                                <TableColumn fx:id="colSection" text="Section"     prefWidth="130"/>
+                                <TableColumn fx:id="colStatus"  text="Status"      prefWidth="110"/>
+                                <TableColumn fx:id="colTime"    text="Time In"     prefWidth="110"/>
+                            </columns>
+                            <placeholder>
+                                <Label text="No students found."
+                                       style="-fx-text-fill: #888780; -fx-font-size: 13px;"/>
+                            </placeholder>
+                        </TableView>
+
+                        <HBox style="-fx-background-color: #F8F7F4;
+                                     -fx-border-color: #D3D1C7; -fx-border-width: 1 0 0 0;
+                                     -fx-padding: 6 14;" alignment="CENTER_LEFT">
+                            <Label fx:id="lblStatusBar"
+                                   text="Select student(s) then use the toolbar to mark attendance."
+                                   style="-fx-font-size: 11px; -fx-text-fill: #5F5E5A;"/>
+                        </HBox>
+
+                    </VBox>
+                </Tab>
+
+                
+                <Tab text="  Attendance History  ">
+                    <VBox>
+
+                        
+                        <HBox style="-fx-background-color: white;
+                                     -fx-border-color: #D3D1C7; -fx-border-width: 0 0 1 0;
+                                     -fx-padding: 10 14;" alignment="CENTER_LEFT" spacing="10">
+
+                            <Label text="From:"
+                                   style="-fx-font-size: 12px; -fx-text-fill: #5F5E5A;"/>
+                            <DatePicker fx:id="dpHistoryFrom" prefWidth="140"
+                                        style="-fx-font-size: 12px;"/>
+
+                            <Label text="To:"
+                                   style="-fx-font-size: 12px; -fx-text-fill: #5F5E5A;"/>
+                            <DatePicker fx:id="dpHistoryTo" prefWidth="140"
+                                        style="-fx-font-size: 12px;"/>
+
+                            <Label text="Status:"
+                                   style="-fx-font-size: 12px; -fx-text-fill: #5F5E5A;"/>
+                            <ComboBox fx:id="cbHistoryStatus" prefWidth="110"
+                                      style="-fx-font-size: 12px;"/>
+
+                            <TextField fx:id="tfHistorySearch" promptText="Search name / section…"
+                                       prefWidth="180"
+                                       style="-fx-font-size: 12px; -fx-padding: 7 10;
+                                              -fx-border-color: #D3D1C7; -fx-border-radius: 5;
+                                              -fx-background-radius: 5;"/>
+
+                            <Button text="Apply Filter" onAction="#applyHistoryFilter"
+                                    style="-fx-background-color: #2C2C2A; -fx-text-fill: white;
+                                           -fx-font-size: 12px; -fx-padding: 7 14;
+                                           -fx-border-radius: 5; -fx-background-radius: 5;
+                                           -fx-cursor: hand;"/>
+                        </HBox>
+
+                        
+                        <TableView fx:id="historyTable" VBox.vgrow="ALWAYS"
+                                   style="-fx-font-size: 12px; -fx-background-color: white;">
+                            <columns>
+                                <TableColumn fx:id="hColDate"    text="Date"       prefWidth="140"/>
+                                <TableColumn fx:id="hColName"    text="Full Name"  prefWidth="210"/>
+                                <TableColumn fx:id="hColSection" text="Section"    prefWidth="120"/>
+                                <TableColumn fx:id="hColStatus"  text="Status"     prefWidth="110"/>
+                                <TableColumn fx:id="hColTime"    text="Time In"    prefWidth="110"/>
+                            </columns>
+                            <placeholder>
+                                <Label text="No history records found."
+                                       style="-fx-text-fill: #888780; -fx-font-size: 13px;"/>
+                            </placeholder>
+                        </TableView>
+
+                        
+                        <HBox style="-fx-background-color: #F8F7F4;
+                                     -fx-border-color: #D3D1C7; -fx-border-width: 1 0 0 0;
+                                     -fx-padding: 6 14;" alignment="CENTER_LEFT">
+                            <Label text="Showing all stored attendance records — use the filters above to narrow results."
+                                   style="-fx-font-size: 11px; -fx-text-fill: #888780;"/>
+                        </HBox>
+
+                    </VBox>
+                </Tab>
+
+            </TabPane>
+        </HBox>
+    </center>
+</BorderPane>
